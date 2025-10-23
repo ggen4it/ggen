@@ -1,0 +1,31 @@
+<footer class="ggen-footer mt-16">
+    <div class="container mx-auto px-4">
+        <div class="ggen-footer__grid">
+            <div>
+                <div class="ggen-footer__logo mb-4">
+                    <img src="{{ 'images/logo.jpg' | asset }}" loading="lazy" width="80" height="80" alt="{{ trans('ggen.brand.logo_alt') }}">
+                    <div>
+                        <h3 class="text-2xl font-semibold">{{ trans('ggen.footer.title') }}</h3>
+                        <p class="text-sm opacity-80 mt-1">{{ trans('ggen.footer.tagline') }}</p>
+                    </div>
+                </div>
+                <p class="opacity-80 leading-7">{{ trans('ggen.footer.description') }}</p>
+            </div>
+            <div class="ggen-footer__contact">
+                <h4 class="text-xl font-semibold mb-4">{{ trans('ggen.footer.contact.title') }}</h4>
+                <a href="tel:+966595556788"><i class="sicon-call-out"></i><span>{{ trans('ggen.footer.contact.phone') }}</span></a>
+                <a href="mailto:contact@ggen.sa"><i class="sicon-mail"></i><span>{{ trans('ggen.footer.contact.email') }}</span></a>
+                <a href="https://www.ggen.sa" target="_blank" rel="noopener"><i class="sicon-globe"></i><span>{{ trans('ggen.footer.contact.website') }}</span></a>
+            </div>
+            <div class="ggen-footer__links">
+                <h4 class="text-xl font-semibold mb-4">{{ trans('ggen.footer.links.title') }}</h4>
+                <a href="/collections"><i class="sicon-arrow-left-circle"></i><span>{{ trans('ggen.footer.links.products') }}</span></a>
+                <a href="/page/about-us"><i class="sicon-arrow-left-circle"></i><span>{{ trans('ggen.footer.links.about') }}</span></a>
+                <a href="/privacy"><i class="sicon-arrow-left-circle"></i><span>{{ trans('ggen.footer.links.privacy') }}</span></a>
+            </div>
+        </div>
+        <div class="mt-12 pt-6 border-t border-white/10 text-center text-sm opacity-75">
+            {{ trans('ggen.footer.copyright', {'year': "now"|date('Y'), 'store': store.name}) }}
+        </div>
+    </div>
+</footer>

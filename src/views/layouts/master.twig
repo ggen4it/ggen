@@ -75,13 +75,15 @@
     {% hook 'head:start' %}
     {% hook head %}
     {% block styles %}{% endblock %}
+    <link rel="preload" href="{{ 'fonts/Emad-Diana-Regular.woff2' | asset }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ 'fonts/Emad-Diana-Regular.woff' | asset }}" as="font" type="font/woff" crossorigin>
     <link rel="stylesheet" href="{{ 'app.css' | asset }}">
-    <link rel="stylesheet" href="{{ theme.font.path|cdn }}"/>
+    <link rel="stylesheet" href="{{ 'styles/ggen.css' | asset }}">
     <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}"/>
-    
+
     <style>
         :root {
-            --font-main: '{{theme.font.name}}';
+            --font-main: 'Emad Diana';
             --color-primary: {{ theme.color.primary }};
             --color-primary-dark: {{ theme.color.darker(0.15) }};
             --color-primary-light: {{ theme.color.lighter(0.15) }};
@@ -104,9 +106,9 @@
 </noscript>
 <div class="app-inner flex flex-col min-h-full">
     {% hook 'body:start' %}
-    {% component 'header.header' %}
+    {% include 'components/header/ggen-header.twig' %}
     {% block content %}{% endblock %}
-    {% component 'footer.footer' %}
+    {% include 'components/footer/ggen-footer.twig' %}
 </div>
 {% hook 'body:end' %}
 <script defer src="{{ 'app.js' | asset }}"></script>

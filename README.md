@@ -50,6 +50,33 @@
 
 <br>
 
+## Green Generation Customization
+The theme has been tailored for متجر الجيل الأخضر (Green Generation) while preserving the Raed file structure.
+
+### What's included
+- **Global styling** at `src/assets/styles/ggen.css` with Emad Diana font, brand colors, CTA gradients, and optional dark mode states.
+- **Brand assets** under `src/assets/images/` including `logo.jpg`, hero background, and the reusable pattern, plus fonts in `src/assets/fonts/`.
+- **Custom components** in `src/views/components/` for the header, hero, featured products, store features, smart specifications, and footer.
+- **Locales** under `src/locales/ar.json` prefixed with `ggen.*` for easy translation management.
+- **Feature toggles** declared in `twilight.json` so components can be enabled from the Twilight dashboard.
+
+### Run & preview
+1. Install dependencies (if not already): `pnpm install` or `npm install`.
+2. Build assets when needed: `pnpm build` or `pnpm dev` during development to bundle styles and scripts.
+3. Preview the theme with Salla CLI from the project root:
+   ```bash
+   salla theme preview
+   # or
+   salla theme p
+   ```
+4. In the Partners Portal, assign the theme to a demo store to review live updates.
+
+### Screens to verify
+- **Homepage** should display the new hero, featured products, and store features sections ahead of default Raed blocks.
+- **Product page** renders the smart specs block when a metafield `smart_specs` list is provided.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ## Overview
 Theme Raed is the starting point for developers to design themes for merchant stores that reflect the uniqueness of each store on the [Salla Platform](https://s.salla.sa). Custom themes will make it much easier for developers to tailor the merchant's store to its changing demands over time. It shipped as the default theme along with the [Twilight Themes](https://docs.salla.dev/?nav=01HNFTD5Y5ESFQS3P9MJ0721VM), which is the Salla themes engine for developers to create customizable themes to be used on the [Salla Platform](https://salla.sa/site/).
   

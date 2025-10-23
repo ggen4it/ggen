@@ -22,7 +22,25 @@
         "component-store-features",
         "component-youtube",
         "menu-images",
-        "filters"
+        "filters",
+        {
+            "type": "component",
+            "name": "ggen_hero",
+            "label": "GreenGen — Hero",
+            "path": "views/components/home/hero-ggen.twig"
+        },
+        {
+            "type": "component",
+            "name": "ggen_featured",
+            "label": "GreenGen — Featured",
+            "path": "views/components/home/featured-ggen.twig"
+        },
+        {
+            "type": "component",
+            "name": "ggen_features",
+            "label": "GreenGen — Store Features",
+            "path": "views/components/home/features-ggen.twig"
+        }
     ],
     "settings": [
         {

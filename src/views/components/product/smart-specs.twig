@@ -1,0 +1,29 @@
+{% set meta = product.metafields ?? {} %}
+{% set smart_specs = meta.smart_specs ?? product.smart_specs ?? [] %}
+{% if (smart_specs is empty) and (meta.get is defined) %}
+    {% set candidate = meta.get('smart_specs') %}
+    {% if candidate %}
+        {% set smart_specs = candidate %}
+    {% endif %}
+{% endif %}
+{% if smart_specs is iterable and smart_specs|length > 0 %}
+<section class="smart-specs" id="smart-specs">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+        <div>
+            <h2 class="section-title text-[var(--ggen-color-dark)]">{{ trans('ggen.smart_specs.title') }}</h2>
+            <p class="section-subtitle">{{ trans('ggen.smart_specs.subtitle') }}</p>
+        </div>
+    </div>
+    <div class="smart-specs__grid">
+        {% for spec in smart_specs %}
+            <div class="smart-specs__item">
+                <span class="smart-specs__label">{{ spec.label }}</span>
+                <div class="smart-specs__value">{{ spec.value }}</div>
+                {% if spec.note %}
+                    <p class="smart-specs__note">{{ spec.note }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}

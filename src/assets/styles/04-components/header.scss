@@ -1,54 +1,157 @@
 
 /* Top Nav */
 .top-navbar {
-  @apply flex py-2 min-h-[48px];
+  @apply relative flex w-full py-2 min-h-[48px] overflow-hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.6));
+    transition: opacity 0.35s ease;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+    opacity: 0.75;
+    filter: blur(40px);
+    pointer-events: none;
+  }
 
   @screen lg {
     @apply py-1.5;
   }
 
   .topnav-has-bg & {
-    @apply bg-[color:var(--topnav-bg)];
+    &:before {
+      @apply bg-[color:var(--topnav-bg)];
+    }
+
+    &:after {
+      opacity: 0.35;
+    }
   }
 
   .topnav-has-gradient & {
-    @apply bg-gradient-to-r from-[color:var(--topnav-gradient-from)] to-[color:var(--topnav-gradient-to)];
+    &:before {
+      @apply bg-gradient-to-r from-[color:var(--topnav-gradient-from)] to-[color:var(--topnav-gradient-to)];
+    }
   }
 
   .topnav-has-text-color & {
     @apply text-[color:var(--topnav-text-color)];
   }
 
+  .top-navbar__inner {
+    @apply relative z-[1];
+  }
+
+  .top-navbar__promo {
+    @apply relative flex flex-col items-center md:items-end gap-1 md:gap-1.5;
+  }
+
+  .top-navbar__badge {
+    @apply inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wider text-gray-700 shadow-md bg-white/70;
+    box-shadow: 0 12px 30px -18px rgba(15, 23, 42, 0.55);
+    animation: floatBadge 6s ease-in-out infinite;
+
+    i {
+      @apply text-base text-primary;
+      animation: sparklePulse 2.8s ease-in-out infinite;
+    }
+  }
+
+  .top-navbar__message {
+    @apply text-sm font-medium text-slate-600 max-w-xs md:max-w-sm leading-snug;
+  }
+
+  .top-navbar__contacts {
+    @apply relative z-[1] flex;
+
+    salla-contacts {
+      @apply flex items-center gap-2 text-sm font-medium;
+    }
+  }
+
   .s-search-input{
-    @apply bg-gray-200/50 hover:bg-gray-200/70 border-none;
+    @apply bg-white/60 hover:bg-white/80 border-none shadow-inner;
   }
 
   @media (max-width: 640px) {
     .s-search-results{
-      @apply w-screen max-w-[100vw] rtl:-left-2.5 ltr:-right-2.5; 
+      @apply w-screen max-w-[100vw] rtl:-left-2.5 ltr:-right-2.5;
     }
-  } 
+  }
 
   .topnav-is-dark & {
-    @apply bg-dark text-gray-300;
+    &:before {
+      background: linear-gradient(135deg, rgba(17, 24, 39, 0.96), rgba(30, 41, 59, 0.86));
+    }
+
+    &:after {
+      background: radial-gradient(circle at center, rgba(37, 99, 235, 0.35), rgba(255, 255, 255, 0));
+      opacity: 0.8;
+    }
+
+    @apply text-gray-200;
 
     .btn--circle-gray,
     .btn--rounded-gray,
     .s-search-input{
-      @apply bg-gray-100/10 hover:bg-gray-100/[0.15]
+      @apply bg-white/10 hover:bg-white/20 text-white;
+    }
+
+    .top-navbar__badge {
+      @apply bg-white/10 text-white;
+      box-shadow: 0 12px 32px -18px rgba(15, 23, 42, 0.9);
+
+      i {
+        @apply text-white;
+      }
+    }
+
+    .top-navbar__message {
+      @apply text-gray-200;
     }
 
     .topnav-link-item{
       @apply border-gray-300/10;
     }
-
-    .s-search-input{
-      @apply text-white;
-    }
   }
 
   .search-btn{
     @apply grow sm:grow-0 justify-start md:justify-center;
+  }
+}
+
+@keyframes sparklePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(250, 204, 21, 0));
+  }
+
+  50% {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.55));
+  }
+}
+
+@keyframes floatBadge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
   }
 }
 
@@ -64,7 +167,7 @@
 /* Main Nav */
 .main-nav-container {
   @apply min-h-[68px] lg:min-h-[84px];
-  
+
   // Custom background Color
   .has-bg &,
   .has-bg & .sub-menu{
@@ -75,6 +178,33 @@
   .has-text-color & {
     @apply text-[color:var(--mainnav-text-color)];
   }
+}
+
+.main-nav-container {
+  .inner {
+    @apply relative rounded-3xl transition-all duration-500 ease-out;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.78));
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    box-shadow: 0 28px 60px -40px rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(18px);
+  }
+
+  .container {
+    @apply py-2;
+  }
+}
+
+.has-bg .main-nav-container .inner {
+  background: var(--mainnav-bg);
+  border-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.topnav-is-dark .main-nav-container .inner {
+  background: linear-gradient(135deg, rgba(17, 24, 39, 0.92), rgba(30, 41, 59, 0.88));
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 32px 70px -45px rgba(15, 23, 42, 0.95);
 }
 
 .menu-item {
@@ -152,14 +282,27 @@
 
 // Mainnav cart icon
 .header-btn{
-  @apply border-none outline-none transition-opacity hover:opacity-80;
+  @apply border-none outline-none transition-all ease-out duration-200 hover:opacity-90;
 
   &__icon{
-    @apply text-xl w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-700;
+    @apply text-xl w-11 h-11 rounded-full border border-white/80 flex items-center justify-center text-gray-700 bg-white/80;
+    box-shadow: 0 16px 35px -22px rgba(15, 23, 42, 0.85);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
     &.icon{
       @apply mr-[9px] rtl:ml-[9px] rtl:mr-[unset];
     }
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 45px -18px rgba(15, 23, 42, 0.9);
+    }
   }
+}
+
+.topnav-is-dark .header-btn__icon {
+  @apply bg-white/10 text-white border-white/10;
+  box-shadow: 0 18px 40px -25px rgba(15, 23, 42, 0.9);
 }
 
 salla-user-menu{

@@ -1,0 +1,371 @@
+@font-face {
+    font-family: 'Emad Diana';
+    src: url('../fonts/Emad-Diana-Regular.woff2') format('woff2'),
+         url('../fonts/Emad-Diana-Regular.woff') format('woff');
+    font-weight: 400;
+    font-display: swap;
+}
+
+:root {
+    --ggen-color-primary: #74AB70;
+    --ggen-color-secondary: #0EA48A;
+    --ggen-color-dark: #0B1B13;
+    --ggen-color-black: #000000;
+    --ggen-color-text-light: #CDE7CD;
+    --ggen-font-family: 'Emad Diana', 'DINNextLTArabic-Regular', sans-serif;
+    --ggen-radius-lg: 24px;
+    --ggen-radius-md: 18px;
+    --ggen-radius-sm: 12px;
+    --ggen-shadow-soft: 0 24px 48px rgba(11, 27, 19, 0.12);
+    --ggen-transition: all 0.3s ease;
+}
+
+body,
+html,
+button,
+input,
+textarea {
+    font-family: var(--ggen-font-family);
+}
+
+body {
+    background-color: #f4f7f5;
+    color: var(--ggen-color-black);
+}
+
+.ggen-glass {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    background: rgba(12, 27, 19, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 14px 40px rgba(11, 27, 19, 0.2);
+}
+
+.ggen-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background-image: linear-gradient(135deg, var(--ggen-color-secondary), var(--ggen-color-primary));
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.4;
+    transition: var(--ggen-transition);
+    border: 0;
+    box-shadow: 0 16px 30px rgba(14, 164, 138, 0.25);
+}
+
+.ggen-btn:hover,
+.ggen-btn:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(14, 164, 138, 0.35);
+}
+
+.ggen-btn--outline {
+    background: transparent;
+    color: var(--ggen-color-secondary);
+    border: 1px solid rgba(14, 164, 138, 0.4);
+    box-shadow: none;
+}
+
+.ggen-btn--outline:hover,
+.ggen-btn--outline:focus {
+    background: rgba(14, 164, 138, 0.08);
+}
+
+.section-title {
+    font-size: clamp(2rem, 3vw, 3.25rem);
+    font-weight: 700;
+    color: var(--ggen-color-dark);
+}
+
+.section-subtitle {
+    font-size: 1.125rem;
+    color: rgba(11, 27, 19, 0.75);
+    max-width: 720px;
+}
+
+.section-pattern {
+    background-image: url('../images/patterns/ggen-pattern.png');
+    background-size: 280px;
+    background-repeat: repeat;
+    background-color: rgba(205, 231, 205, 0.3);
+    border-radius: var(--ggen-radius-lg);
+}
+
+.ggen-card {
+    border-radius: var(--ggen-radius-md);
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: var(--ggen-shadow-soft);
+    transition: var(--ggen-transition);
+}
+
+.ggen-card:hover {
+    transform: translateY(-6px);
+}
+
+.ggen-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: rgba(14, 164, 138, 0.12);
+    color: var(--ggen-color-secondary);
+    font-size: 0.85rem;
+}
+
+.hero-ggen {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--ggen-radius-lg);
+    box-shadow: var(--ggen-shadow-soft);
+    background: linear-gradient(120deg, rgba(11, 27, 19, 0.92), rgba(14, 164, 138, 0.85));
+    color: #fff;
+}
+
+.hero-ggen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('../images/patterns/ggen-pattern.png');
+    opacity: 0.18;
+    mix-blend-mode: screen;
+}
+
+.hero-ggen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(116, 171, 112, 0.6), transparent 50%),
+        radial-gradient(circle at 80% 30%, rgba(14, 164, 138, 0.4), transparent 40%);
+    pointer-events: none;
+}
+
+.hero-ggen__content {
+    position: relative;
+    z-index: 2;
+    padding: clamp(3rem, 6vw, 5rem);
+}
+
+.hero-ggen__media {
+    position: relative;
+    z-index: 1;
+    min-height: 320px;
+}
+
+.hero-ggen__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: lighten;
+    opacity: 0.9;
+}
+
+.hero-ggen__circuits {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 10% 30%, rgba(255, 255, 255, 0.16), transparent 60%),
+        radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.1), transparent 60%);
+    pointer-events: none;
+}
+
+.hero-ggen__actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+
+.featured-ggen {
+    padding: clamp(3rem, 6vw, 5rem);
+}
+
+.featured-ggen__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+}
+
+.featured-ggen__image {
+    border-radius: var(--ggen-radius-md);
+    overflow: hidden;
+    margin-bottom: 18px;
+    box-shadow: 0 12px 30px rgba(11, 27, 19, 0.12);
+}
+
+.featured-ggen__image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.features-ggen {
+    padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+.features-ggen__grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.features-ggen__item {
+    border-radius: var(--ggen-radius-md);
+    padding: 24px;
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(205, 231, 205, 0.45));
+    border: 1px solid rgba(14, 164, 138, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.features-ggen__icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    background: rgba(14, 164, 138, 0.15);
+    color: var(--ggen-color-secondary);
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+}
+
+.smart-specs {
+    margin-top: 48px;
+    border-radius: var(--ggen-radius-lg);
+    background: linear-gradient(125deg, rgba(255, 255, 255, 0.94), rgba(205, 231, 205, 0.6));
+    box-shadow: var(--ggen-shadow-soft);
+    padding: clamp(2rem, 4vw, 3rem);
+}
+
+.smart-specs__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+}
+
+.smart-specs__item {
+    padding: 16px;
+    border-radius: var(--ggen-radius-sm);
+    background: #fff;
+    border: 1px solid rgba(14, 164, 138, 0.18);
+    box-shadow: 0 12px 24px rgba(11, 27, 19, 0.08);
+}
+
+.smart-specs__label {
+    font-size: 0.95rem;
+    color: rgba(11, 27, 19, 0.7);
+}
+
+.smart-specs__value {
+    font-size: 1.2rem;
+    color: var(--ggen-color-dark);
+    margin-top: 6px;
+}
+
+.smart-specs__note {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: rgba(11, 27, 19, 0.6);
+}
+
+.ggen-footer {
+    background: var(--ggen-color-dark);
+    color: var(--ggen-color-text-light);
+    padding: 48px 0 32px;
+}
+
+.ggen-footer__grid {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    align-items: start;
+}
+
+.ggen-footer__logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.ggen-footer__logo img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    border-radius: 18px;
+}
+
+.ggen-footer__contact a {
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    text-decoration: none;
+    transition: var(--ggen-transition);
+}
+
+.ggen-footer__contact a:hover {
+    color: #fff;
+}
+
+.ggen-footer__links a {
+    color: var(--ggen-color-text-light);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    transition: var(--ggen-transition);
+}
+
+.ggen-footer__links a:hover {
+    color: #fff;
+    transform: translateX(-4px);
+}
+
+@media (max-width: 768px) {
+    .hero-ggen__content {
+        text-align: center;
+    }
+
+    .hero-ggen__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-ggen__actions .ggen-btn {
+        width: 100%;
+    }
+}
+
+.dark body {
+    background-color: #0B1B13;
+    color: var(--ggen-color-text-light);
+}
+
+.dark .ggen-card,
+.dark .smart-specs__item,
+.dark .section-pattern,
+.dark .smart-specs,
+.dark .features-ggen__item {
+    background: rgba(11, 27, 19, 0.9);
+    color: var(--ggen-color-text-light);
+    border-color: rgba(116, 171, 112, 0.3);
+}
+
+.dark .ggen-btn--outline {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.24);
+}
+
+.dark .section-title {
+    color: #fff;
+}
+
+.dark .section-subtitle {
+    color: rgba(255, 255, 255, 0.75);
+}

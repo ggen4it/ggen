@@ -1,0 +1,44 @@
+{% set nav_items = [
+    { 'label': trans('ggen.header.categories'), 'url': '/collections' },
+    { 'label': trans('ggen.header.offers'), 'url': '/offers' },
+    { 'label': trans('ggen.header.contact'), 'url': '/page/contact' }
+] %}
+<header class="sticky top-0 z-40">
+    <div class="container mx-auto px-4">
+        <div class="ggen-glass mt-4 mb-6 rounded-3xl px-6 py-4 lg:px-10 lg:py-6 flex flex-col lg:flex-row lg:items-center lg:justify-between">
+            <div class="flex items-center justify-between w-full gap-6">
+                <a href="{{ store.url }}" class="flex items-center gap-4">
+                    <img src="{{ 'images/logo.jpg' | asset }}" loading="eager" width="72" height="72" alt="{{ trans('ggen.brand.logo_alt') }}" class="w-16 h-16 rounded-2xl object-contain shadow-lg">
+                    <div class="text-white">
+                        <span class="text-xl lg:text-2xl font-bold block">{{ trans('ggen.header.title') }}</span>
+                        <span class="text-sm lg:text-base opacity-80">{{ trans('ggen.header.subtitle') }}</span>
+                    </div>
+                </a>
+                <button class="lg:hidden text-white text-3xl" aria-label="{{ trans('ggen.header.open_menu') }}" onclick="salla.event.dispatch('menu::open')">
+                    <i class="sicon-menu"></i>
+                </button>
+            </div>
+            <nav class="hidden lg:flex items-center gap-8 text-white mt-6 lg:mt-0">
+                {% for item in nav_items %}
+                    <a href="{{ item.url }}" class="text-base tracking-wide transition hover:text-[rgba(205,231,205,0.9)]">{{ item.label }}</a>
+                {% endfor %}
+            </nav>
+            <div class="flex items-center justify-end gap-4 text-white mt-6 lg:mt-0">
+                {% if user.type=='user' %}
+                    <salla-user-menu class="hidden lg:block"></salla-user-menu>
+                {% else %}
+                    <button class="text-2xl" aria-label="{{ trans('ggen.header.account') }}" onclick="salla.event.dispatch('login::open')">
+                        <i class="sicon-user-circle"></i>
+                    </button>
+                {% endif %}
+                <salla-cart-summary class="text-2xl">
+                    <i slot="icon" class="sicon-shopping-bag"></i>
+                </salla-cart-summary>
+            </div>
+        </div>
+    </div>
+</header>
+{% if store.scope %}
+    <salla-scopes selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
+{% endif %}
+

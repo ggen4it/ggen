@@ -1,0 +1,17 @@
+<section class="container mx-auto px-4 mt-6">
+    <div class="hero-ggen grid gap-0 lg:grid-cols-2">
+        <div class="hero-ggen__content">
+            <span class="ggen-badge mb-4">{{ trans('ggen.hero.badge') }}</span>
+            <h1 class="section-title text-white mb-6">{{ trans('ggen.hero.title') }}</h1>
+            <p class="section-subtitle text-white/80">{{ trans('ggen.hero.subtitle') }}</p>
+            <div class="hero-ggen__actions">
+                <a href="/collections" class="ggen-btn" aria-label="{{ trans('ggen.hero.cta_primary') }}">{{ trans('ggen.hero.cta_primary') }}</a>
+                <a href="/page/about-us" class="ggen-btn ggen-btn--outline text-white" aria-label="{{ trans('ggen.hero.cta_secondary') }}">{{ trans('ggen.hero.cta_secondary') }}</a>
+            </div>
+        </div>
+        <div class="hero-ggen__media relative">
+            <img src="{{ 'images/hero/hero-01.jpg' | asset }}" loading="lazy" width="800" height="600" alt="{{ trans('ggen.hero.image_alt') }}">
+            <div class="hero-ggen__circuits"></div>
+        </div>
+    </div>
+</section>
